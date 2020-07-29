@@ -12,32 +12,33 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Seasons {
     private final String url = "http://ergast.com/api/f1/seasons.json";
 
-    private ArrayList<Season> seasons;
+    private List<Season> seasons;
 
     public Seasons() {
         seasons = new ArrayList<>();
 
     }
 
-    private class Season {
-        int date;
-        String wikiUrl;
+    protected class Season {
+        private int date;
+        private String wikiUrl;
 
         private Season(int date, String url) {
             this.date = date;
             this.wikiUrl = url;
         }
 
-        public int getDate() {
+        protected int getDate() {
             return date;
         }
 
-        public String getWikiUrl() {
+        protected String getWikiUrl() {
             return wikiUrl;
         }
     }
@@ -60,7 +61,6 @@ public class Seasons {
                                 String url = season.getString("url");
                                 seasons.add(new Season(year, url));
                             }
-                            readSeason();
 
                         } catch (JSONException e) {
                             System.out.println("baj van");
@@ -89,8 +89,8 @@ public class Seasons {
         }
     }
 
-    public ArrayList<Season> getList() {
-        return seasons;
+    public List<Season> getList() {
+        return this.seasons;
     }
 
 

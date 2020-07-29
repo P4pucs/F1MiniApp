@@ -18,6 +18,7 @@ public class Driver {
     private String url = "http://ergast.com/api/f1/drivers/";
 
     private String driverId;
+
     private String givenName;
     private String familyName;
     private String nationality;
@@ -28,6 +29,35 @@ public class Driver {
     public Driver(String driverId) {
         this.url += driverId + ".json" ;
     }
+
+    public String getDriverId() {
+        return driverId;
+    }
+
+    public String getGivenName() {
+        return givenName;
+    }
+
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public int getPermanentNumber() {
+        return permanentNumber;
+    }
+
+    public String getWikiUrl() {
+        return wikiUrl;
+    }
+
 
     public JsonObjectRequest jsonParse() {
 
@@ -56,8 +86,6 @@ public class Driver {
                                 permanentNumber = Integer.parseInt(driver.getString("permanentNumber"));
 
                             wikiUrl = driver.getString("url");
-
-                            readDriver();
 
                         } catch (JSONException e) {
                             System.out.println("baj van");

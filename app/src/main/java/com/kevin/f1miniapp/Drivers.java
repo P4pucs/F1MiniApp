@@ -12,26 +12,28 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Drivers {
     private String url = "http://ergast.com/api/f1/";
 
-    private ArrayList<Driver> drivers;
+    private List<Driver> drivers;
 
     public Drivers(int year) {
         this.url += year + "/drivers.json" ;//concat(year + "/drivers.json");
         drivers = new ArrayList<>();
     }
 
-    private class Driver {
-        String driverId;
-        String givenName;
-        String familyName;
-        String nationality;
-        String dateOfBirth;
-        int permanentNumber;
-        String wikiUrl;
+    protected class Driver {
+
+        private String driverId;
+        private String givenName;
+        private String familyName;
+        private String nationality;
+        private String dateOfBirth;
+        private int permanentNumber;
+        private String wikiUrl;
 
         private Driver(String driverId,
                         String givenName,
@@ -48,6 +50,35 @@ public class Drivers {
             this.permanentNumber = permanentNumber;
             this.wikiUrl = wikiUrl;
         }
+
+        protected String getDriverId() {
+            return driverId;
+        }
+
+        protected String getGivenName() {
+            return givenName;
+        }
+
+        protected String getFamilyName() {
+            return familyName;
+        }
+
+        protected String getNationality() {
+            return nationality;
+        }
+
+        protected String getDateOfBirth() {
+            return dateOfBirth;
+        }
+
+        protected int getPermanentNumber() {
+            return permanentNumber;
+        }
+
+        protected String getWikiUrl() {
+            return wikiUrl;
+        }
+
     }
 
     public JsonObjectRequest jsonParse() {
@@ -88,7 +119,6 @@ public class Drivers {
                                     permanentNumber,
                                     wikiUrl));
                         }
-                        readDrivers();
 
                     } catch (JSONException e) {
                         System.out.println("baj van");
@@ -121,6 +151,10 @@ public class Drivers {
                     " permanentNumber: " + drivers.get(i).permanentNumber +
                     " wikiUrl: " + drivers.get(i).wikiUrl);
         }
+    }
+
+    public List<Driver> getList() {
+        return this.drivers;
     }
 }
 
