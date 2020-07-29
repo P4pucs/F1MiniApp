@@ -2,6 +2,7 @@ package com.kevin.f1miniapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -26,6 +27,9 @@ public class DriversActivity extends AppCompatActivity {
         requestQueue.start();
 
         toDriverButton.setOnClickListener(view -> {
+            Intent myIntent = new Intent(this, DriverActivity.class);
+            //myIntent.putExtra("key", value); //Optional parameters
+            this.startActivity(myIntent);
         });
 
 

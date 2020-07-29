@@ -87,9 +87,8 @@ public class Drivers {
                                     dateOfBirth,
                                     permanentNumber,
                                     wikiUrl));
-                            readDrivers();
-
                         }
+                        readDrivers();
 
                     } catch (JSONException e) {
                         System.out.println("baj van");
