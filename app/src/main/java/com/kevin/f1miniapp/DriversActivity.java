@@ -14,7 +14,7 @@ public class DriversActivity extends AppCompatActivity {
 
     private RequestQueue requestQueue;
 
-    private Drivers drivers = new Drivers(2012);
+    private Drivers drivers = new Drivers(2000);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class DriversActivity extends AppCompatActivity {
                 { @Override public void onRequestFinished(Request request) {
 
                     System.out.println("alma: " + drivers.getList().get(2).getGivenName());
+                    drivers.groupByNations();
                 }
                 }; requestQueue.addRequestFinishedListener(listener);
 

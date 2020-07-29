@@ -1,5 +1,10 @@
 package com.kevin.f1miniapp;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -155,6 +160,26 @@ public class Drivers {
 
     public List<Driver> getList() {
         return this.drivers;
+    }
+
+
+    @SuppressLint("NewApi")
+    public HashMap<String, Integer> groupByNations() {
+        HashMap<String, Integer> map = new HashMap<>();
+
+        String countryTmp;
+        for (int i=0;i<getList().size(); i++) {
+            countryTmp = getList().get(i).nationality;
+            if (map.containsKey(countryTmp)) {
+                int tmp = map.get(countryTmp) + 1;
+                map.replace(countryTmp, tmp);
+            } else {
+                map.put(countryTmp, 1);
+            }
+        }
+        System.out.println(map);
+
+        return map;
     }
 }
 
