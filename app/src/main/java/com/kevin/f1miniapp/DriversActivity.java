@@ -14,7 +14,7 @@ public class DriversActivity extends AppCompatActivity {
 
     private RequestQueue requestQueue;
 
-    private Drivers drivers = new Drivers(2000);
+    Drivers drivers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,8 @@ public class DriversActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drivers);
 
         Button toDriverButton = findViewById(R.id.toDriverButton);
+
+        drivers = new Drivers(Integer.parseInt(getIntent().getStringExtra("YEAR")));
 
         requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(drivers.jsonParse());

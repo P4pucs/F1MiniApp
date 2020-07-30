@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Seasons {
+public class Seasons extends Season {
     private final String url = "http://ergast.com/api/f1/seasons.json";
 
     private List<Season> seasons;
@@ -23,24 +23,6 @@ public class Seasons {
     public Seasons() {
         seasons = new ArrayList<>();
 
-    }
-
-    protected class Season {
-        private int date;
-        private String wikiUrl;
-
-        private Season(int date, String url) {
-            this.date = date;
-            this.wikiUrl = url;
-        }
-
-        protected int getDate() {
-            return date;
-        }
-
-        protected String getWikiUrl() {
-            return wikiUrl;
-        }
     }
 
     public JsonObjectRequest jsonParse() {
@@ -85,7 +67,7 @@ public class Seasons {
 
     public void readSeason() {
         for (int i=0;i<seasons.size();i++) {
-            System.out.println("year: " + seasons.get(i).date + " url: " + seasons.get(i).wikiUrl);
+            System.out.println("year: " + seasons.get(i).getDate() + " url: " + seasons.get(i).getWikiUrl());
         }
     }
 
