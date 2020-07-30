@@ -42,7 +42,7 @@ public class SeasonListAdapter extends ArrayAdapter<Season> {
             convertView = layoutInflater.inflate(resource, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.yearTextView = (TextView) convertView.findViewById(R.id.yearTextView);
-            viewHolder.wikiButton = (Button) convertView.findViewById(R.id.seasonWikiButton);
+            viewHolder.wikiButton = (Button) convertView.findViewById(R.id.wikiButton);
 
             convertView.setTag(viewHolder);
         } else {

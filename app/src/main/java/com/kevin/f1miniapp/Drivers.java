@@ -1,9 +1,6 @@
 package com.kevin.f1miniapp;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -29,64 +26,10 @@ public class Drivers {
 
     public Drivers(int year) {
         this.url += year + "/drivers.json" ;//concat(year + "/drivers.json");
-        drivers = new ArrayList<>();
+        drivers = new ArrayList<Driver>();
     }
 
-    protected class Driver {
 
-        private String driverId;
-        private String givenName;
-        private String familyName;
-        private String nationality;
-        private String dateOfBirth;
-        private int permanentNumber;
-        private String wikiUrl;
-
-        private Driver(String driverId,
-                        String givenName,
-                        String familyName,
-                        String nationality,
-                        String dateOfBirth,
-                        int permanentNumber,
-                        String wikiUrl) {
-            this.driverId = driverId;
-            this.givenName = givenName;
-            this.familyName = familyName;
-            this.nationality = nationality;
-            this.dateOfBirth = dateOfBirth;
-            this.permanentNumber = permanentNumber;
-            this.wikiUrl = wikiUrl;
-        }
-
-        protected String getDriverId() {
-            return driverId;
-        }
-
-        protected String getGivenName() {
-            return givenName;
-        }
-
-        protected String getFamilyName() {
-            return familyName;
-        }
-
-        protected String getNationality() {
-            return nationality;
-        }
-
-        protected String getDateOfBirth() {
-            return dateOfBirth;
-        }
-
-        protected int getPermanentNumber() {
-            return permanentNumber;
-        }
-
-        protected String getWikiUrl() {
-            return wikiUrl;
-        }
-
-    }
 
     public JsonObjectRequest jsonParse() {
 
@@ -150,13 +93,13 @@ public class Drivers {
 
     public void readDrivers() {
         for (int i=0;i<drivers.size();i++) {
-            System.out.println("driverId: " + drivers.get(i).driverId +
-                    " givenName: " + drivers.get(i).givenName +
-                    " familyName: " + drivers.get(i).familyName +
-                    " nationality: " + drivers.get(i).nationality +
-                    " dateOfBirth: " + drivers.get(i).dateOfBirth.toString() +
-                    " permanentNumber: " + drivers.get(i).permanentNumber +
-                    " wikiUrl: " + drivers.get(i).wikiUrl);
+            System.out.println("driverId: " + drivers.get(i).getDriverId() +
+                    " givenName: " + drivers.get(i).getGivenName() +
+                    " familyName: " + drivers.get(i).getFamilyName() +
+                    " nationality: " + drivers.get(i).getNationality() +
+                    " dateOfBirth: " + drivers.get(i).getDateOfBirth().toString() +
+                    " permanentNumber: " + drivers.get(i).getPermanentNumber() +
+                    " wikiUrl: " + drivers.get(i).getWikiUrl());
         }
     }
 
@@ -171,7 +114,7 @@ public class Drivers {
 
         String countryTmp;
         for (int i=0;i<getList().size(); i++) {
-            countryTmp = getList().get(i).nationality;
+            countryTmp = getList().get(i).getNationality();
             if (map.containsKey(countryTmp)) {
                 int tmp = map.get(countryTmp) + 1;
                 map.replace(countryTmp, tmp);
