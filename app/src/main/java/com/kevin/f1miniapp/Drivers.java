@@ -17,8 +17,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Drivers {
     private String url = "http://ergast.com/api/f1/";
@@ -177,9 +179,14 @@ public class Drivers {
                 map.put(countryTmp, 1);
             }
         }
-        System.out.println(map);
 
-        return map;
+        final HashMap<String, Integer> sortedByCount = map.entrySet().stream()
+                .sorted((Map.Entry.<String, Integer>comparingByValue().reversed()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        System.out.println(sortedByCount);
+
+        return sortedByCount;
+
     }
 }
 
