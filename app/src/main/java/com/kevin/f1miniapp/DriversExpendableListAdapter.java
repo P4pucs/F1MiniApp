@@ -62,7 +62,7 @@ public class DriversExpendableListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int i, boolean isCollapsed, View view, ViewGroup viewGroup) {
 
-        String name = getGroup(i).getGivenName() + "  " + getGroup(i).getFamilyName();
+        String name = getGroup(i).getGivenName() + " " + getGroup(i).getFamilyName();
 
         if(view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -77,8 +77,10 @@ public class DriversExpendableListAdapter extends BaseExpandableListAdapter {
                 public void onClick(View view) {
                     if (isCollapsed) {
                         ((ExpandableListView) viewGroup).collapseGroup(i);
+                        expandButton.setText("expand");
                     } else {
                         ((ExpandableListView) viewGroup).expandGroup(i, false);
+                        expandButton.setText("collapse");
                     }
                 }
             });
@@ -90,7 +92,11 @@ public class DriversExpendableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
 
         String nationality = getChild(i, i1).getNationality();
+        String dateOfBirth = getChild(i, i1).getDateOfBirth();
+        String permanentNumber = ((getChild(i, i1).getPermanentNumber() == -1) ? "no racenumber" : String.valueOf(getChild(i, i1).getPermanentNumber()));
         TextView nationalityTextView = null;
+        TextView dateOfBirthTextView = null;
+        TextView permanentNumberTextView = null;
         Button wikiButton = null;
 
         if(view == null) {
@@ -100,6 +106,10 @@ public class DriversExpendableListAdapter extends BaseExpandableListAdapter {
         }
         nationalityTextView = view.findViewById(R.id.nationalityTextView);
         nationalityTextView.setText(nationality);
+        dateOfBirthTextView = view.findViewById(R.id.dateOfBirthTextView);
+        dateOfBirthTextView.setText(dateOfBirth);
+        permanentNumberTextView = view.findViewById(R.id.permanentNumberTextView);
+        permanentNumberTextView.setText(permanentNumber);
 
         wikiButton = view.findViewById(R.id.driverWikiButton);
 

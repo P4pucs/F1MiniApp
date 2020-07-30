@@ -1,29 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="wrap_content"
+    android:weightSum="10">
 
-    <Button
-        android:id="@+id/driverWikiButton"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:text="Button"
-        android:layout_alignParentEnd="true"/>
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="8">
+        <TextView
+            android:id="@+id/nationalityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginStart="15dp"
+            android:text="nationality"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/dateOfBirthTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginStart="15dp"
+            android:text="dateOfBirth"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/nationalityTextView"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:text="nationality"
-        android:textSize="20sp" />
+        android:orientation="vertical"
+        android:layout_weight="2">
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/driverWikiButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginStart="100dp"
+            android:text="info" />
+
+        <TextView
+            android:id="@+id/permanentNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginStart="30dp"
+            android:text="permanentNumber"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

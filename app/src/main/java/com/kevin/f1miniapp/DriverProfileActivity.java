@@ -17,7 +17,7 @@ public class DriverProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver);
+        setContentView(R.layout.activity_driver_profile);
         setTitle(getIntent().getStringExtra("DRIVERID"));
         driverProfile = new DriverProfile(getIntent().getStringExtra("DRIVERID"));
 
