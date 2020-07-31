@@ -75,19 +75,11 @@ public class DriversActivity extends AppCompatActivity {
                             Intent intent = new Intent(DriversActivity.this, DriverProfileActivity.class);
                             intent.putExtra("DRIVERID", driverId);
                             startActivity(intent);
-                            return true;
-                        }
-                    });
+                                return true;
+                            }
+                        });
 
-                }
-                }; requestQueue.addRequestFinishedListener(listener);
-
-//        toDriverButton.setOnClickListener(view -> {
-//            Intent myIntent = new Intent(this, DriverActivity.class);
-//            //myIntent.putExtra("key", value); //Optional parameters
-//            this.startActivity(myIntent);
-//        });
-
+                }}; requestQueue.addRequestFinishedListener(listener);
 
     }
 }

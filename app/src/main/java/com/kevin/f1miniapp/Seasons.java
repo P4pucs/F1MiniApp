@@ -1,8 +1,15 @@
 package com.kevin.f1miniapp;
 
+import android.widget.Toast;
+
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
@@ -51,7 +58,17 @@ public class Seasons extends Season {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    System.out.println("No Connection/Communication Error!");
+                } else if (error instanceof AuthFailureError) {
+                    System.out.println("Authentication/ Auth Error!");
+                } else if (error instanceof ServerError) {
+                    System.out.println("Server Error!");
+                } else if (error instanceof NetworkError) {
+                    System.out.println("Network Error!");
+                } else if (error instanceof ParseError) {
+                    System.out.println("Parse Error!");
+                }
             }
         }) {
             @Override
