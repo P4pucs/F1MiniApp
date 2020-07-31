@@ -44,6 +44,8 @@ public class DriversActivity extends AppCompatActivity {
                     System.out.println("alma: " + drivers.getList().get(2).getGivenName());
                     drivers.groupByNations();
 
+                    drivers.readDrivers();
+
                     ExpandableListView expandableListView = findViewById(R.id.driversExpandableListView);
 
                     DriversExpendableListAdapter adapter = new DriversExpendableListAdapter(DriversActivity.this, drivers.getList());

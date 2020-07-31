@@ -65,7 +65,7 @@ public class DriversExpendableListAdapter extends BaseExpandableListAdapter {
         String name = getGroup(i).getGivenName() + " " + getGroup(i).getFamilyName();
 
         if(view == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.drivers_list_group, null);
         }
             TextView textView1 = (TextView) view.findViewById(R.id.nameTextView);
@@ -93,14 +93,14 @@ public class DriversExpendableListAdapter extends BaseExpandableListAdapter {
 
         String nationality = getChild(i, i1).getNationality();
         String dateOfBirth = getChild(i, i1).getDateOfBirth();
-        String permanentNumber = ((getChild(i, i1).getPermanentNumber() == -1) ? "no racenumber" : String.valueOf(getChild(i, i1).getPermanentNumber()));
+        String permanentNumber = ((getChild(i, i1).getPermanentNumber() == -1) ? "no racenumber" : "raceNumber: " + getChild(i, i1).getPermanentNumber());
         TextView nationalityTextView = null;
         TextView dateOfBirthTextView = null;
         TextView permanentNumberTextView = null;
         Button wikiButton = null;
 
         if(view == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.drivers_list_item, null);
 
         }

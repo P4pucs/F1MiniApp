@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Seasons extends Season {
-    private final String url = "http://ergast.com/api/f1/seasons.json";
+    private final String url = "http://ergast.com/api/f1/seasons.json?limit=100.json";
 
     private List<Season> seasons;
 
@@ -45,7 +45,6 @@ public class Seasons extends Season {
                             }
 
                         } catch (JSONException e) {
-                            System.out.println("baj van");
                             e.printStackTrace();
                         }
                     }

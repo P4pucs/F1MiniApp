@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class DriverProfile {
 
-    private String url = "http://ergast.com/api/f1/drivers/";
+    private String url;
 
     private String driverId;
 
@@ -23,11 +23,12 @@ public class DriverProfile {
     private String familyName;
     private String nationality;
     private String dateOfBirth;
+    private String code = "";
     private int permanentNumber;
     private String wikiUrl;
 
     public DriverProfile(String driverId) {
-        this.url += driverId + ".json" ;
+        this.url = "http://ergast.com/api/f1/drivers/" + driverId + ".json" ;
     }
 
     public String getDriverId() {
@@ -48,6 +49,10 @@ public class DriverProfile {
 
     public String getDateOfBirth() {
         return dateOfBirth;
+    }
+
+    public String getCode() {
+        return code;
     }
 
     public int getPermanentNumber() {
@@ -76,19 +81,21 @@ public class DriverProfile {
                             familyName = driver.getString("familyName");
                             nationality = driver.getString("nationality");
                             dateOfBirth = driver.getString("dateOfBirth");
+                            wikiUrl = driver.getString("url");
 
 //                            SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
 //                            dateOfBirth = format.parse(driver.getString("dateOfBirth"));
 
-                            if(driver.isNull("permanentNumber"))
+                            if(driver.isNull("permanentNumber")) {
                                 permanentNumber = -1;
-                            else
+                            }
+                            else {
                                 permanentNumber = Integer.parseInt(driver.getString("permanentNumber"));
+                            }
+                            code = driver.getString("code");
 
-                            wikiUrl = driver.getString("url");
 
                         } catch (JSONException e) {
-                            System.out.println("baj van");
                             e.printStackTrace();
                         }
                     }
@@ -114,6 +121,7 @@ public class DriverProfile {
                 " familyName: " + familyName +
                 " nationality: " + nationality +
                 " dateOfBirth: " + dateOfBirth +
+                " code: " + code +
                 " permanentNumber: " + permanentNumber +
                 " wikiUrl: " + wikiUrl);
     }

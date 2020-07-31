@@ -71,7 +71,6 @@ public class Drivers {
                         }
 
                     } catch (JSONException e) {
-                        System.out.println("baj van");
                         e.printStackTrace();
                     }
                 }
